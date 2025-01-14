@@ -1,0 +1,21 @@
+{
+  "name": "secrest-resume-project-playwright",
+  "version": "1.0.0",
+  "description": "WIP",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SecrestNathan/secrest-resume-project-playwright.git"
+  },
+  "author": "Nathan Secrest",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SecrestNathan/secrest-resume-project-playwright/issues"
+  },
+  "homepage": "https://github.com/SecrestNathan/secrest-resume-project-playwright#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.6"
+  }
+}
