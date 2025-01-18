@@ -1,29 +1,61 @@
 import { Page, Locator } from "@playwright/test"
 
 export class GeneralComponentsPage {
-
     private readonly page: Page
     public readonly url = "https://commitquality.com/practice-general-components"
 
+    // Exercise - Buttons
     readonly basicClickButton: Locator
     readonly doubleClickButton: Locator
     readonly rightClickButton: Locator
     readonly buttonsContainer: Locator
 
+    // Exercise - Radio Buttons
+    readonly radioButton1: Locator
+    readonly radioButton2: Locator
+    readonly radioButtonsContainer: Locator
+
+    // Exercise - Select an Option
+    readonly selectDropdown: Locator
+
+    // Exercise - Checkboxes
+    readonly checkbox1: Locator
+    readonly checkbox2: Locator
+    readonly checkbox3: Locator
+
+    // Exercise - Links
+    readonly linkMyYouTube: Locator
+    readonly linkMyYouTubeNewTab: Locator
+    readonly linkPracticePageNewTab: Locator
+
     constructor(page: Page) {
         this.page = page
-        this.basicClickButton = this.page.locator('[data-testid="basic-click"]')
-        this.doubleClickButton = this.page.locator('[data-testid="double-click"]')
-        this.rightClickButton = this.page.locator('[data-testid="right-click"]')
+
+        // Exercise - Buttons
+        this.basicClickButton = this.page.getByRole('button').locator('[data-testid="basic-click"]')
+        this.doubleClickButton = this.page.getByRole('button').locator('[data-testid="double-click"]')
+        this.rightClickButton = this.page.getByRole('button').locator('[data-testid="right-click"]')
         this.buttonsContainer = this.page.locator('.button-container')
+
+        // Exercise - Radio Buttons
+        this.radioButton1 = this.page.getByRole('radio').locator('[data-testid="option1"]')
+        this.radioButton2 = this.page.getByRole('radio').locator('[data-testid="option2"]')
+
+        // Exercise - Select an Option
+        this.selectDropdown = this.page.locator('[data-testid="dropdown"] select')
+
+        // Exercise - Checkboxes
+
+
+        // Exercise - Links
     }
 
-    // Goto
+    // Navigate - All
     public async goto() {
         await this.page.goto(this.url)
     }
 
-    // Actions
+    // Actions - Buttons
     public async clickBasicClickButton() {
         await this.basicClickButton.click()
     }
@@ -33,4 +65,25 @@ export class GeneralComponentsPage {
     public async clickRightClickButton() {
         await this.rightClickButton.click({ button: 'right' })
     }
+
+    // Actions - Radio Buttons
+
+
+    // Actions - Select an Option
+    public async selectDropdownOption1() {
+        await this.selectDropdown.selectOption({value: 'option1'})
+    }
+    public async selectDropdownOption2() {
+        await this.selectDropdown.selectOption({value: 'option2'})
+    }
+    public async selectDropdownOption3() {
+        await this.selectDropdown.selectOption({value: 'option3'})
+    }
+
+    // Exercise - Checkboxes
+
+
+    // Exercise - Links
+
+
 }
