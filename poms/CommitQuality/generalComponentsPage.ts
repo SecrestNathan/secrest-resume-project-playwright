@@ -32,14 +32,15 @@ export class GeneralComponentsPage {
         this.page = page
 
         // Exercise - Buttons
-        this.basicClickButton = this.page.getByRole('button').locator('[data-testid="basic-click"]')
-        this.doubleClickButton = this.page.getByRole('button').locator('[data-testid="double-click"]')
-        this.rightClickButton = this.page.getByRole('button').locator('[data-testid="right-click"]')
+        this.basicClickButton = this.page.locator('[data-testid="basic-click"]')
+        this.doubleClickButton = this.page.locator('[data-testid="double-click"]')
+        this.rightClickButton = this.page.locator('[data-testid="right-click"]')
         this.buttonsContainer = this.page.locator('.button-container')
 
         // Exercise - Radio Buttons
-        this.radioButton1 = this.page.getByRole('radio').locator('[data-testid="option1"]')
-        this.radioButton2 = this.page.getByRole('radio').locator('[data-testid="option2"]')
+        this.radioButton1 = this.page.locator('[data-testid="option1"]')
+        this.radioButton2 = this.page.locator('[data-testid="option2"]')
+        this.radioButtonsContainer = this.page.locator('.radio-buttons-container')
 
         // Exercise - Select an Option
         this.selectDropdown = this.page.locator('[data-testid="dropdown"] select')
@@ -67,7 +68,12 @@ export class GeneralComponentsPage {
     }
 
     // Actions - Radio Buttons
-
+    public async clickRadioButton1() {
+        await this.radioButton1.click()
+    }
+    public async clickRadioButton2() {
+        await this.radioButton2.click()
+    }
 
     // Actions - Select an Option
     public async selectDropdownOption1() {
