@@ -8,12 +8,12 @@ export class GeneralComponentsPage {
     readonly basicClickButton: Locator
     readonly doubleClickButton: Locator
     readonly rightClickButton: Locator
-    readonly buttonsContainer: Locator
+    readonly buttonsResult: Locator
 
     // Exercise - Radio Buttons
     readonly radioButton1: Locator
     readonly radioButton2: Locator
-    readonly radioButtonsContainer: Locator
+    readonly radioButtonsResult: Locator
 
     // Exercise - Select an Option
     readonly selectDropdown: Locator
@@ -22,6 +22,9 @@ export class GeneralComponentsPage {
     readonly checkbox1: Locator
     readonly checkbox2: Locator
     readonly checkbox3: Locator
+    readonly checkbox1Result: Locator
+    readonly checkbox2Result: Locator
+    readonly checkbox3Result: Locator
 
     // Exercise - Links
     readonly linkMyYouTube: Locator
@@ -35,18 +38,23 @@ export class GeneralComponentsPage {
         this.basicClickButton = this.page.locator('[data-testid="basic-click"]')
         this.doubleClickButton = this.page.locator('[data-testid="double-click"]')
         this.rightClickButton = this.page.locator('[data-testid="right-click"]')
-        this.buttonsContainer = this.page.locator('.button-container')
+        this.buttonsResult = this.page.locator('.button-container')
 
         // Exercise - Radio Buttons
         this.radioButton1 = this.page.locator('[data-testid="option1"]')
         this.radioButton2 = this.page.locator('[data-testid="option2"]')
-        this.radioButtonsContainer = this.page.locator('.radio-buttons-container')
+        this.radioButtonsResult = this.page.locator('.radio-buttons-container > .component-container > p')
 
         // Exercise - Select an Option
         this.selectDropdown = this.page.locator('[data-testid="dropdown"] select')
 
         // Exercise - Checkboxes
-
+        this.checkbox1 = this.page.locator('[data-testid="checkbox1"]')
+        this.checkbox2 = this.page.locator('[data-testid="checkbox2"]')
+        this.checkbox3 = this.page.locator('[data-testid="checkbox3"]')
+        this.checkbox1Result = this.checkbox1.locator('.. >> p')
+        this.checkbox2Result = this.checkbox2.locator('.. >> p')
+        this.checkbox3Result = this.checkbox3.locator('.. >> p')
 
         // Exercise - Links
     }
@@ -87,6 +95,24 @@ export class GeneralComponentsPage {
     }
 
     // Exercise - Checkboxes
+    public async checkCheckbox1() {
+        await this.checkbox1.check()
+    }
+    public async uncheckCheckbox1() {
+        await this.checkbox1.uncheck()
+    }
+    public async checkCheckbox2() {
+        await this.checkbox2.check()
+    }
+    public async uncheckCheckbox2() {
+        await this.checkbox2.uncheck()
+    }
+    public async checkCheckbox3() {
+        await this.checkbox3.check()
+    }
+    public async uncheckCheckbox3() {
+        await this.checkbox3.uncheck()
+    }
 
 
     // Exercise - Links

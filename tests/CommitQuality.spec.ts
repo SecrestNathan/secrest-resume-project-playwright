@@ -6,23 +6,23 @@ test.describe('General Components', () => {
     await generalComponentsPage.goto()
 
     await generalComponentsPage.clickBasicClickButton()
-    await expect(generalComponentsPage.buttonsContainer).toContainText('Button clicked')
+    await expect(generalComponentsPage.buttonsResult).toContainText('Button clicked')
 
     await generalComponentsPage.clickDoubleClickButton()
-    await expect(generalComponentsPage.buttonsContainer).toContainText('Button double clicked')
+    await expect(generalComponentsPage.buttonsResult).toContainText('Button double clicked')
 
     await generalComponentsPage.clickRightClickButton()
-    await expect(generalComponentsPage.buttonsContainer).toContainText('Button right mouse clicked')
+    await expect(generalComponentsPage.buttonsResult).toContainText('Button right mouse clicked')
   });
 
   test('Radio Buttons', async ({ generalComponentsPage }) => {
     await generalComponentsPage.goto()
     
     await generalComponentsPage.clickRadioButton1()
-    await expect(generalComponentsPage.radioButtonsContainer).toContainText('option1 clicked')
+    await expect(generalComponentsPage.radioButtonsResult).toHaveText('option1 clicked')
 
     await generalComponentsPage.clickRadioButton2()
-    await expect(generalComponentsPage.radioButtonsContainer).toContainText('option2 clicked')
+    await expect(generalComponentsPage.radioButtonsResult).toHaveText('option2 clicked')
   });
 
   test('Select an Option', async ({ generalComponentsPage }) => {
@@ -38,18 +38,22 @@ test.describe('General Components', () => {
     await expect(generalComponentsPage.selectDropdown).toHaveValue('option3')
   });
 
-  // test('Checkboxes', async ({ generalComponentsPage }) => {
-  //   await generalComponentsPage.goto()
+  test('Checkboxes', async ({ generalComponentsPage }) => {
+    await generalComponentsPage.goto()
 
-  //   await generalComponentsPage.clickBasicClickButton()
-  //   await expect(generalComponentsPage.buttonsContainer).toContainText('Button clicked')
-
-  //   await generalComponentsPage.clickDoubleClickButton()
-  //   await expect(generalComponentsPage.buttonsContainer).toContainText('Button double clicked')
-
-  //   await generalComponentsPage.clickRightClickButton()
-  //   await expect(generalComponentsPage.buttonsContainer).toContainText('Button right mouse clicked')
-  // });
+    await generalComponentsPage.checkCheckbox1()
+    await expect(generalComponentsPage.checkbox1Result).toHaveText('Checkbox 1 checked')
+    await generalComponentsPage.checkCheckbox2()
+    await expect(generalComponentsPage.checkbox2Result).toHaveText('Checkbox 2 checked')
+    await generalComponentsPage.checkCheckbox3()
+    await expect(generalComponentsPage.checkbox3Result).toHaveText('Checkbox 3 checked')
+    await generalComponentsPage.uncheckCheckbox1()
+    await expect(generalComponentsPage.checkbox1Result).not.toBeAttached()
+    await generalComponentsPage.uncheckCheckbox2()
+    await expect(generalComponentsPage.checkbox2Result).not.toBeAttached()
+    await generalComponentsPage.uncheckCheckbox3()
+    await expect(generalComponentsPage.checkbox3Result).not.toBeAttached()
+  });
 
   // test('Links', async ({ generalComponentsPage }) => {
   //   await generalComponentsPage.goto()
