@@ -22,9 +22,9 @@ export class GeneralComponentsPage {
     readonly checkbox1: Locator
     readonly checkbox2: Locator
     readonly checkbox3: Locator
-    readonly checkbox1Result: Locator
-    readonly checkbox2Result: Locator
-    readonly checkbox3Result: Locator
+    readonly checkboxResult1: Locator
+    readonly checkboxResult2: Locator
+    readonly checkboxResult3: Locator
 
     // Exercise - Links
     readonly linkMyYouTube: Locator
@@ -43,7 +43,7 @@ export class GeneralComponentsPage {
         // Exercise - Radio Buttons
         this.radioButton1 = this.page.locator('[data-testid="option1"]')
         this.radioButton2 = this.page.locator('[data-testid="option2"]')
-        this.radioButtonsResult = this.page.locator('.radio-buttons-container > .component-container > p')
+        this.radioButtonsResult = this.page.locator('.radio-buttons-container >> p')
 
         // Exercise - Select an Option
         this.selectDropdown = this.page.locator('[data-testid="dropdown"] select')
@@ -52,11 +52,14 @@ export class GeneralComponentsPage {
         this.checkbox1 = this.page.locator('[data-testid="checkbox1"]')
         this.checkbox2 = this.page.locator('[data-testid="checkbox2"]')
         this.checkbox3 = this.page.locator('[data-testid="checkbox3"]')
-        this.checkbox1Result = this.checkbox1.locator('.. >> p')
-        this.checkbox2Result = this.checkbox2.locator('.. >> p')
-        this.checkbox3Result = this.checkbox3.locator('.. >> p')
+        this.checkboxResult1 = this.checkbox1.locator('.. >> p')
+        this.checkboxResult2 = this.checkbox2.locator('.. >> p')
+        this.checkboxResult3 = this.checkbox3.locator('.. >> p')
 
         // Exercise - Links
+        this.linkMyYouTube = this.page.locator('[data-testid="link-same-tab"]')
+        this.linkMyYouTubeNewTab = this.page.locator('[data-testid="link-newtab"]')
+        this.linkPracticePageNewTab = this.page.locator('[data-testid="link-newtab-practice"]')
     }
 
     // Navigate - All
@@ -116,6 +119,25 @@ export class GeneralComponentsPage {
 
 
     // Exercise - Links
-
+    public async clickMyYouTubeLink() {
+        await this.linkMyYouTube.click()
+        await this.page.waitForLoadState()
+    }
+    public async clickMyYouTubeNewTabLink() {
+        const [newTab] = await Promise.all([
+            this.page.waitForEvent('popup'),
+            this.linkMyYouTubeNewTab.click()
+        ])
+        await newTab.waitForLoadState()
+        return newTab
+    }
+    public async clickPracticePageNewTabLink() {
+        const [newTab] = await Promise.all([
+            this.page.waitForEvent('popup'),
+            this.linkPracticePageNewTab.click()
+        ])
+        await newTab.waitForLoadState()
+        return newTab
+    }
 
 }
