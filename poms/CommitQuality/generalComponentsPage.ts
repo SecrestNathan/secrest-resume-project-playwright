@@ -80,10 +80,10 @@ export class GeneralComponentsPage {
 
     // Actions - Radio Buttons
     public async clickRadioButton1() {
-        await this.radioButton1.click()
+        await this.radioButton1.check()
     }
     public async clickRadioButton2() {
-        await this.radioButton2.click()
+        await this.radioButton2.check()
     }
 
     // Actions - Select an Option

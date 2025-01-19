@@ -20,26 +20,40 @@ test.describe('General Components', () => {
   test('Radio Buttons', async ({ generalComponentsPage }) => {
     await generalComponentsPage.goto()
     
+    await expect(generalComponentsPage.radioButton1).not.toBeChecked()
+    await expect(generalComponentsPage.radioButton2).not.toBeChecked()
     await expect(generalComponentsPage.radioButtonsContainer).not.toContainText('clicked')
 
     await generalComponentsPage.clickRadioButton1()
+    await expect(generalComponentsPage.radioButton1).toBeChecked()
+    await expect(generalComponentsPage.radioButton2).not.toBeChecked()
     await expect(generalComponentsPage.radioButtonsContainer).toContainText('option1 clicked')
+    await expect(generalComponentsPage.radioButtonsContainer).not.toContainText('option2 clicked')
 
     await generalComponentsPage.clickRadioButton2()
+    await expect(generalComponentsPage.radioButton1).not.toBeChecked()
+    await expect(generalComponentsPage.radioButton2).toBeChecked()
+    await expect(generalComponentsPage.radioButtonsContainer).not.toContainText('option1 clicked')
     await expect(generalComponentsPage.radioButtonsContainer).toContainText('option2 clicked')
   });
 
-  test('Select an Option', async ({ generalComponentsPage }) => {
+  test('Select Dropdown', async ({ generalComponentsPage }) => {
     await generalComponentsPage.goto()
+
+    await expect(generalComponentsPage.selectDropdown).toHaveValue('')
+    await expect(generalComponentsPage.selectDropdown).toContainText('Select an option')
 
     await generalComponentsPage.selectDropdownOption1()
     await expect(generalComponentsPage.selectDropdown).toHaveValue('option1')
+    await expect(generalComponentsPage.selectDropdown).toContainText('Option 1')
 
     await generalComponentsPage.selectDropdownOption2()
     await expect(generalComponentsPage.selectDropdown).toHaveValue('option2')
+    await expect(generalComponentsPage.selectDropdown).toContainText('Option 2')
 
     await generalComponentsPage.selectDropdownOption3()
     await expect(generalComponentsPage.selectDropdown).toHaveValue('option3')
+    await expect(generalComponentsPage.selectDropdown).toContainText('Option 3')
   });
 
   test('Checkboxes', async ({ generalComponentsPage }) => {
