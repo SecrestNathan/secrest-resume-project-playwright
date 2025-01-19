@@ -8,12 +8,12 @@ export class GeneralComponentsPage {
     readonly basicClickButton: Locator
     readonly doubleClickButton: Locator
     readonly rightClickButton: Locator
-    readonly buttonsResult: Locator
+    readonly buttonsContainer: Locator
 
     // Exercise - Radio Buttons
     readonly radioButton1: Locator
     readonly radioButton2: Locator
-    readonly radioButtonsResult: Locator
+    readonly radioButtonsContainer: Locator
 
     // Exercise - Select an Option
     readonly selectDropdown: Locator
@@ -22,9 +22,9 @@ export class GeneralComponentsPage {
     readonly checkbox1: Locator
     readonly checkbox2: Locator
     readonly checkbox3: Locator
-    readonly checkboxResult1: Locator
-    readonly checkboxResult2: Locator
-    readonly checkboxResult3: Locator
+    readonly checkboxContainer1: Locator
+    readonly checkboxContainer2: Locator
+    readonly checkboxContainer3: Locator
 
     // Exercise - Links
     readonly linkMyYouTube: Locator
@@ -38,12 +38,12 @@ export class GeneralComponentsPage {
         this.basicClickButton = this.page.locator('[data-testid="basic-click"]')
         this.doubleClickButton = this.page.locator('[data-testid="double-click"]')
         this.rightClickButton = this.page.locator('[data-testid="right-click"]')
-        this.buttonsResult = this.page.locator('.button-container')
+        this.buttonsContainer = this.page.locator('.buttons-container')
 
         // Exercise - Radio Buttons
         this.radioButton1 = this.page.locator('[data-testid="option1"]')
         this.radioButton2 = this.page.locator('[data-testid="option2"]')
-        this.radioButtonsResult = this.page.locator('.radio-buttons-container >> p')
+        this.radioButtonsContainer = this.page.locator('.radio-buttons-container')
 
         // Exercise - Select an Option
         this.selectDropdown = this.page.locator('[data-testid="dropdown"] select')
@@ -52,9 +52,9 @@ export class GeneralComponentsPage {
         this.checkbox1 = this.page.locator('[data-testid="checkbox1"]')
         this.checkbox2 = this.page.locator('[data-testid="checkbox2"]')
         this.checkbox3 = this.page.locator('[data-testid="checkbox3"]')
-        this.checkboxResult1 = this.checkbox1.locator('.. >> p')
-        this.checkboxResult2 = this.checkbox2.locator('.. >> p')
-        this.checkboxResult3 = this.checkbox3.locator('.. >> p')
+        this.checkboxContainer1 = this.checkbox1.locator('..')
+        this.checkboxContainer2 = this.checkbox2.locator('..')
+        this.checkboxContainer3 = this.checkbox3.locator('..')
 
         // Exercise - Links
         this.linkMyYouTube = this.page.locator('[data-testid="link-same-tab"]')
