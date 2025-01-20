@@ -11,17 +11,17 @@ test.describe('General Components', () => {
       await expect(generalComponentsPage.buttonsContainer).not.toContainText('clicked')
     })
 
-    await test.step('Initial State', async () => {
+    await test.step('Click Left-Click Button', async () => {
       await generalComponentsPage.clickBasicClickButton()
       await expect(generalComponentsPage.buttonsContainer).toContainText('Button clicked')
     })
 
-    await test.step('Initial State', async () => {
+    await test.step('Click Double-Click Button', async () => {
       await generalComponentsPage.clickDoubleClickButton()
       await expect(generalComponentsPage.buttonsContainer).toContainText('Button double clicked')
     })
 
-    await test.step('Initial State', async () => {
+    await test.step('Click Right-Click Button', async () => {
       await generalComponentsPage.clickRightClickButton()
       await expect(generalComponentsPage.buttonsContainer).toContainText('Button right mouse clicked')
     })
@@ -34,7 +34,7 @@ test.describe('General Components', () => {
       await expect(generalComponentsPage.radioButtonsContainer).not.toContainText('clicked')
     })
 
-    await test.step('Option 1 Checked', async () => {
+    await test.step('Check Option 1', async () => {
       await generalComponentsPage.checkRadioButton(generalComponentsPage.radioButton1)
       await expect(generalComponentsPage.radioButton1).toBeChecked()
       await expect(generalComponentsPage.radioButton2).not.toBeChecked()
@@ -42,7 +42,7 @@ test.describe('General Components', () => {
       await expect(generalComponentsPage.radioButtonsContainer).not.toContainText('option2 clicked')
     })
 
-    await test.step('Option 2 Checked', async () => {
+    await test.step('Check Option 2', async () => {
       await generalComponentsPage.checkRadioButton(generalComponentsPage.radioButton2)
       await expect(generalComponentsPage.radioButton1).not.toBeChecked()
       await expect(generalComponentsPage.radioButton2).toBeChecked()
@@ -57,19 +57,19 @@ test.describe('General Components', () => {
       await expect(generalComponentsPage.selectDropdown).toContainText('Select an option')
     })
     
-    await test.step('Option 1 Selected', async () => {
+    await test.step('Select Option 1', async () => {
       await generalComponentsPage.selectDropdownOption('1')
       await expect(generalComponentsPage.selectDropdown).toHaveValue('option1')
       await expect(generalComponentsPage.selectDropdown).toContainText('Option 1')
     })
 
-    await test.step('Option 2 Selected', async () => {
+    await test.step('Select Option 2', async () => {
       await generalComponentsPage.selectDropdownOption('2')
       await expect(generalComponentsPage.selectDropdown).toHaveValue('option2')
       await expect(generalComponentsPage.selectDropdown).toContainText('Option 2')
     })
 
-    await test.step('Option 3 Selected', async () => {
+    await test.step('Select Option 3', async () => {
       await generalComponentsPage.selectDropdownOption('3')
       await expect(generalComponentsPage.selectDropdown).toHaveValue('option3')
       await expect(generalComponentsPage.selectDropdown).toContainText('Option 3')
@@ -85,7 +85,7 @@ test.describe('General Components', () => {
       await expect(generalComponentsPage.checkbox3).not.toBeChecked()
     })
 
-    await test.step('Checkbox 1 Checked and Unchecked', async () => {
+    await test.step('Check and Uncheck Checkbox 1', async () => {
       await generalComponentsPage.checkCheckbox(generalComponentsPage.checkbox1);
       await expect(generalComponentsPage.checkbox1).toBeChecked()
       await expect(generalComponentsPage.checkboxContainer1).toContainText('Checkbox 1 checked')
@@ -95,7 +95,7 @@ test.describe('General Components', () => {
       await expect(generalComponentsPage.checkboxContainer1).not.toContainText('Checkbox 1 checked')
     })
 
-    await test.step('Checkbox 2 Checked and Unchecked', async () => {
+    await test.step('Check and Uncheck Checkbox 2', async () => {
       await generalComponentsPage.checkCheckbox(generalComponentsPage.checkbox2);
       await expect(generalComponentsPage.checkbox2).toBeChecked()
       await expect(generalComponentsPage.checkboxContainer2).toContainText('Checkbox 2 checked')
@@ -105,7 +105,7 @@ test.describe('General Components', () => {
       await expect(generalComponentsPage.checkboxContainer2).not.toContainText('Checkbox 2 checked')
     })
     
-    await test.step('Checkbox 3 Checked and Unchecked', async () => {
+    await test.step('Check and Uncheck Checkbox 3', async () => {
       await generalComponentsPage.checkCheckbox(generalComponentsPage.checkbox3);
       await expect(generalComponentsPage.checkbox3).toBeChecked()
       await expect(generalComponentsPage.checkboxContainer3).toContainText('Checkbox 3 checked')
