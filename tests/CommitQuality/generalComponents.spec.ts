@@ -117,8 +117,6 @@ test.describe('General Components', () => {
   });
 
   test('Links', async ({ page, generalComponentsPage }) => {
-    await generalComponentsPage.goto()
-
     await test.step('Click YouTube Link that Stays in Current Tab', async () => {
       await generalComponentsPage.clickMyYouTubeLink()
       await expect(page).toHaveURL('https://www.youtube.com/@commitquality')
