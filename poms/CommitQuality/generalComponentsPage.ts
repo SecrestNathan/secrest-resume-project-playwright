@@ -1,4 +1,5 @@
 import { Page, Locator } from "@playwright/test"
+import { expect } from '../../fixtures/CommitQuality/base.ts'
 
 export class GeneralComponentsPage {
     private readonly page: Page
@@ -25,6 +26,7 @@ export class GeneralComponentsPage {
     readonly checkboxContainer1: Locator
     readonly checkboxContainer2: Locator
     readonly checkboxContainer3: Locator
+    readonly checkboxesContainer: Locator
 
     // Exercise - Links
     readonly linkMyYouTube: Locator
@@ -55,6 +57,7 @@ export class GeneralComponentsPage {
         this.checkboxContainer1 = this.checkbox1.locator('..')
         this.checkboxContainer2 = this.checkbox2.locator('..')
         this.checkboxContainer3 = this.checkbox3.locator('..')
+        this.checkboxesContainer = this.page.locator('.checkbox-container.container-outline')
 
         // Exercise - Links
         this.linkMyYouTube = this.page.locator('[data-testid="link-same-tab"]')
@@ -79,44 +82,22 @@ export class GeneralComponentsPage {
     }
 
     // Actions - Radio Buttons
-    public async clickRadioButton1() {
-        await this.radioButton1.check()
-    }
-    public async clickRadioButton2() {
-        await this.radioButton2.check()
+    public async checkRadioButton(radioButton: Locator) {
+        await radioButton.check()
     }
 
     // Actions - Select an Option
-    public async selectDropdownOption1() {
-        await this.selectDropdown.selectOption({value: 'option1'})
-    }
-    public async selectDropdownOption2() {
-        await this.selectDropdown.selectOption({value: 'option2'})
-    }
-    public async selectDropdownOption3() {
-        await this.selectDropdown.selectOption({value: 'option3'})
+    public async selectDropdownOption(option: string) {
+        await this.selectDropdown.selectOption({ value: `option${option}` })
     }
 
     // Exercise - Checkboxes
-    public async checkCheckbox1() {
-        await this.checkbox1.check()
+    public async checkCheckbox(checkbox: Locator) {
+        await checkbox.check();
     }
-    public async uncheckCheckbox1() {
-        await this.checkbox1.uncheck()
+    public async uncheckCheckbox(checkbox: Locator) {
+        await checkbox.uncheck();
     }
-    public async checkCheckbox2() {
-        await this.checkbox2.check()
-    }
-    public async uncheckCheckbox2() {
-        await this.checkbox2.uncheck()
-    }
-    public async checkCheckbox3() {
-        await this.checkbox3.check()
-    }
-    public async uncheckCheckbox3() {
-        await this.checkbox3.uncheck()
-    }
-
 
     // Exercise - Links
     public async clickMyYouTubeLink() {
