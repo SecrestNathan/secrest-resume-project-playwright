@@ -1,21 +1,23 @@
 import { Page } from "@playwright/test"
 
 export class ContactUsFormPage {
+    private readonly page: Page
 
-    public url = "https://commitquality.com/practice"
+    // URLs
+    public readonly url = "https://commitquality.com/practice-contact-form"
 
-    readonly page: Page
+    // Initialize Locators
 
     constructor(page: Page) {
         this.page = page
+
+        // Construct Locators
     }
 
-    // Goto
+    // Actions - Navigation
     public async goto() {
         await this.page.goto(this.url)
     }
 
-    // Locators
-
-    // Actions
+    // Actions - Exercise: Contact Form
 }

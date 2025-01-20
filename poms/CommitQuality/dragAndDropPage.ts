@@ -1,21 +1,23 @@
-import { Page } from "@playwright/test"
+import { Page, Locator } from "@playwright/test"
 
 export class DragAndDropPage {
+    private readonly page: Page
 
-    public url = "https://commitquality.com/practice"
+    // URLs
+    public readonly url = "https://commitquality.com/practice-drag-and-drop"
 
-    readonly page: Page
+    // Initialize Locators
 
     constructor(page: Page) {
         this.page = page
+
+        // Construct Locators
     }
 
-    // Goto
+    // Actions - Navigation
     public async goto() {
         await this.page.goto(this.url)
     }
 
-    // Locators
-
-    // Actions
+    // Actions - Exercise: Drag and Drop
 }

@@ -1,25 +1,26 @@
 import { Page, Locator } from "@playwright/test"
-import { expect } from '../../fixtures/CommitQuality/base.ts'
 
 export class GeneralComponentsPage {
     private readonly page: Page
+
+    // URLs
     public readonly url = "https://commitquality.com/practice-general-components"
 
-    // Exercise - Buttons
+    // Initialize Locators - Exercise: Buttons
     readonly basicClickButton: Locator
     readonly doubleClickButton: Locator
     readonly rightClickButton: Locator
     readonly buttonsContainer: Locator
 
-    // Exercise - Radio Buttons
+    // Initialize Locators - Exercise: Radio Buttons
     readonly radioButton1: Locator
     readonly radioButton2: Locator
     readonly radioButtonsContainer: Locator
 
-    // Exercise - Select an Option
+    // Initialize Locators - Exercise: Select an Option
     readonly selectDropdown: Locator
 
-    // Exercise - Checkboxes
+    // Initialize Locators - Exercise: Checkboxes
     readonly checkbox1: Locator
     readonly checkbox2: Locator
     readonly checkbox3: Locator
@@ -28,7 +29,7 @@ export class GeneralComponentsPage {
     readonly checkboxContainer3: Locator
     readonly checkboxesContainer: Locator
 
-    // Exercise - Links
+    // Initialize Locators - Exercise: Links
     readonly linkMyYouTube: Locator
     readonly linkMyYouTubeNewTab: Locator
     readonly linkPracticePageNewTab: Locator
@@ -36,21 +37,21 @@ export class GeneralComponentsPage {
     constructor(page: Page) {
         this.page = page
 
-        // Exercise - Buttons
+        // Construct Locators - Exercise: Buttons
         this.basicClickButton = this.page.locator('[data-testid="basic-click"]')
         this.doubleClickButton = this.page.locator('[data-testid="double-click"]')
         this.rightClickButton = this.page.locator('[data-testid="right-click"]')
         this.buttonsContainer = this.page.locator('.buttons-container')
 
-        // Exercise - Radio Buttons
+        // Construct Locators - Exercise: Radio Buttons
         this.radioButton1 = this.page.locator('[data-testid="option1"]')
         this.radioButton2 = this.page.locator('[data-testid="option2"]')
         this.radioButtonsContainer = this.page.locator('.radio-buttons-container')
 
-        // Exercise - Select an Option
+        // Construct Locators - Exercise: Select an Option
         this.selectDropdown = this.page.locator('[data-testid="dropdown"] select')
 
-        // Exercise - Checkboxes
+        // Construct Locators - Exercise: Checkboxes
         this.checkbox1 = this.page.locator('[data-testid="checkbox1"]')
         this.checkbox2 = this.page.locator('[data-testid="checkbox2"]')
         this.checkbox3 = this.page.locator('[data-testid="checkbox3"]')
@@ -59,18 +60,18 @@ export class GeneralComponentsPage {
         this.checkboxContainer3 = this.checkbox3.locator('..')
         this.checkboxesContainer = this.page.locator('.checkbox-container.container-outline')
 
-        // Exercise - Links
+        // Construct Locators - Exercise: Links
         this.linkMyYouTube = this.page.locator('[data-testid="link-same-tab"]')
         this.linkMyYouTubeNewTab = this.page.locator('[data-testid="link-newtab"]')
         this.linkPracticePageNewTab = this.page.locator('[data-testid="link-newtab-practice"]')
     }
 
-    // Navigate - All
+    // Actions - Navigation
     public async goto() {
         await this.page.goto(this.url)
     }
 
-    // Actions - Buttons
+    // Actions - Exercise: Buttons
     public async clickBasicClickButton() {
         await this.basicClickButton.click()
     }
@@ -81,17 +82,17 @@ export class GeneralComponentsPage {
         await this.rightClickButton.click({ button: 'right' })
     }
 
-    // Actions - Radio Buttons
+    // Actions - Exercise: Radio Buttons
     public async checkRadioButton(radioButton: Locator) {
         await radioButton.check()
     }
 
-    // Actions - Select an Option
+    // Actions - Exercise: Select an Option
     public async selectDropdownOption(option: string) {
         await this.selectDropdown.selectOption({ value: `option${option}` })
     }
 
-    // Exercise - Checkboxes
+    // Actions - Exercise: Checkboxes
     public async checkCheckbox(checkbox: Locator) {
         await checkbox.check();
     }
@@ -99,7 +100,7 @@ export class GeneralComponentsPage {
         await checkbox.uncheck();
     }
 
-    // Exercise - Links
+    // Actions - Exercise: Links
     public async clickMyYouTubeLink() {
         await this.linkMyYouTube.click()
         await this.page.waitForLoadState()

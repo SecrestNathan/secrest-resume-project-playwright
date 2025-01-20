@@ -1,16 +1,23 @@
-import { Page } from "@playwright/test"
+import { Page, Locator } from "@playwright/test"
 
 export class AccordionsPage {
+    private readonly page: Page
 
-    public url = "https://commitquality.com/practice-accordions"
+    // URLs
+    public readonly url = "https://commitquality.com/practice-accordions"
 
-    readonly page: Page
+    // Initialize Locators
 
     constructor(page: Page) {
         this.page = page
+
+        // Construct Locators
     }
 
+    // Actions - Navigation
     public async goto() {
         await this.page.goto(this.url)
     }
+
+    // Actions - Exercise: Accordions
 }
