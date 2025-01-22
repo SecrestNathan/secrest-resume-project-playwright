@@ -6,7 +6,7 @@ test.describe('Accordions', () => {
     await accordionsPage.goto()
   })
 
-  test('', async ({ accordionsPage }) => {
+  test('', async ({ accordionsPage, generalComponentsPage }) => {
     
   })
 })

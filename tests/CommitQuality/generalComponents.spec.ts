@@ -33,12 +33,11 @@ test.describe('General Components', () => {
       await expect(generalComponentsPage.radioButton2).not.toBeChecked()
       await expect(generalComponentsPage.radioButtonsContainer).not.toContainText('clicked')
     })
-
     await test.step('Check Option 1', async () => {
       await generalComponentsPage.checkRadioButton(generalComponentsPage.radioButton1)
       await expect(generalComponentsPage.radioButton1).toBeChecked()
       await expect(generalComponentsPage.radioButton2).not.toBeChecked()
-      await expect(generalComponentsPage.radioButtonsContainer).toContainText('option1 clicked')
+      await expect(generalComponentsPage.radioButtonsContainer).toContainText(`option1 clicked`)
       await expect(generalComponentsPage.radioButtonsContainer).not.toContainText('option2 clicked')
     })
 
@@ -56,64 +55,35 @@ test.describe('General Components', () => {
       await expect(generalComponentsPage.selectDropdown).toHaveValue('')
       await expect(generalComponentsPage.selectDropdown).toContainText('Select an option')
     })
-    
-    await test.step('Select Option 1', async () => {
-      await generalComponentsPage.selectDropdownOption('1')
-      await expect(generalComponentsPage.selectDropdown).toHaveValue('option1')
-      await expect(generalComponentsPage.selectDropdown).toContainText('Option 1')
-    })
-
-    await test.step('Select Option 2', async () => {
-      await generalComponentsPage.selectDropdownOption('2')
-      await expect(generalComponentsPage.selectDropdown).toHaveValue('option2')
-      await expect(generalComponentsPage.selectDropdown).toContainText('Option 2')
-    })
-
-    await test.step('Select Option 3', async () => {
-      await generalComponentsPage.selectDropdownOption('3')
-      await expect(generalComponentsPage.selectDropdown).toHaveValue('option3')
-      await expect(generalComponentsPage.selectDropdown).toContainText('Option 3')
-    })
+    for (let i = 1; i <= 3; i++) {
+      await test.step(`Select Option ${i}`, async () => {
+        await generalComponentsPage.selectDropdownOption(i)
+        await expect(generalComponentsPage.selectDropdown).toHaveValue(`option${i}`)
+        await expect(generalComponentsPage.selectDropdown).toContainText(`Option ${i}`)
+      })
+    }
   });
 
   test('Checkboxes', async ({ generalComponentsPage }) => {
-    
     await test.step('Initial State', async () => {
       await expect(generalComponentsPage.checkboxesContainer).not.toContainText('checked')
-      await expect(generalComponentsPage.checkbox1).not.toBeChecked()
-      await expect(generalComponentsPage.checkbox2).not.toBeChecked()
-      await expect(generalComponentsPage.checkbox3).not.toBeChecked()
+      await expect(generalComponentsPage.checkbox(1)).not.toBeChecked()
+      await expect(generalComponentsPage.checkbox(2)).not.toBeChecked()
+      await expect(generalComponentsPage.checkbox(3)).not.toBeChecked()
     })
+    for (let i = 1; i <= 3; i++) {
+      await test.step(`Check and Uncheck Checkbox ${i}`, async () => {
+        // Check
+        await generalComponentsPage.checkbox(i).check();
+        await expect(generalComponentsPage.checkbox(i)).toBeChecked();
+        await expect(generalComponentsPage.checkboxContainer(i)).toContainText(`Checkbox ${i} checked`);
 
-    await test.step('Check and Uncheck Checkbox 1', async () => {
-      await generalComponentsPage.checkCheckbox(generalComponentsPage.checkbox1);
-      await expect(generalComponentsPage.checkbox1).toBeChecked()
-      await expect(generalComponentsPage.checkboxContainer1).toContainText('Checkbox 1 checked')
-
-      await generalComponentsPage.uncheckCheckbox(generalComponentsPage.checkbox1);
-      await expect(generalComponentsPage.checkbox1).not.toBeChecked()
-      await expect(generalComponentsPage.checkboxContainer1).not.toContainText('Checkbox 1 checked')
-    })
-
-    await test.step('Check and Uncheck Checkbox 2', async () => {
-      await generalComponentsPage.checkCheckbox(generalComponentsPage.checkbox2);
-      await expect(generalComponentsPage.checkbox2).toBeChecked()
-      await expect(generalComponentsPage.checkboxContainer2).toContainText('Checkbox 2 checked')
-
-      await generalComponentsPage.uncheckCheckbox(generalComponentsPage.checkbox2);
-      await expect(generalComponentsPage.checkbox2).not.toBeChecked()
-      await expect(generalComponentsPage.checkboxContainer2).not.toContainText('Checkbox 2 checked')
-    })
-    
-    await test.step('Check and Uncheck Checkbox 3', async () => {
-      await generalComponentsPage.checkCheckbox(generalComponentsPage.checkbox3);
-      await expect(generalComponentsPage.checkbox3).toBeChecked()
-      await expect(generalComponentsPage.checkboxContainer3).toContainText('Checkbox 3 checked')
-
-      await generalComponentsPage.uncheckCheckbox(generalComponentsPage.checkbox3);
-      await expect(generalComponentsPage.checkbox3).not.toBeChecked()
-      await expect(generalComponentsPage.checkboxContainer3).not.toContainText('Checkbox 3 checked')
-    })
+        // Uncheck
+        await generalComponentsPage.checkbox(i).uncheck();
+        await expect(generalComponentsPage.checkbox(i)).not.toBeChecked();
+        await expect(generalComponentsPage.checkboxContainer(i)).not.toContainText(`Checkbox ${i} checked`);
+      });
+    }
   });
 
   test('Links', async ({ page, generalComponentsPage }) => {

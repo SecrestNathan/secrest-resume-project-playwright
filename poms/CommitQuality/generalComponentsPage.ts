@@ -7,58 +7,53 @@ export class GeneralComponentsPage {
     public readonly url = "https://commitquality.com/practice-general-components"
 
     // Initialize Locators - Exercise: Buttons
-    readonly basicClickButton: Locator
-    readonly doubleClickButton: Locator
-    readonly rightClickButton: Locator
-    readonly buttonsContainer: Locator
+    public readonly basicClickButton: Locator
+    public readonly doubleClickButton: Locator
+    public readonly rightClickButton: Locator
+    public readonly buttonsContainer: Locator
 
     // Initialize Locators - Exercise: Radio Buttons
-    readonly radioButton1: Locator
-    readonly radioButton2: Locator
-    readonly radioButtonsContainer: Locator
+    //public readonly radioButton: (index: number) => Locator
+    public readonly radioButton1: Locator
+    public readonly radioButton2: Locator
+    public readonly radioButtonsContainer: Locator
 
     // Initialize Locators - Exercise: Select an Option
-    readonly selectDropdown: Locator
+    public readonly selectDropdown: Locator
 
     // Initialize Locators - Exercise: Checkboxes
-    readonly checkbox1: Locator
-    readonly checkbox2: Locator
-    readonly checkbox3: Locator
-    readonly checkboxContainer1: Locator
-    readonly checkboxContainer2: Locator
-    readonly checkboxContainer3: Locator
-    readonly checkboxesContainer: Locator
+    public readonly checkbox: (index: number) => Locator
+    public readonly checkboxContainer: (index: number) => Locator
+    public readonly checkboxesContainer: Locator
 
     // Initialize Locators - Exercise: Links
-    readonly linkMyYouTube: Locator
-    readonly linkMyYouTubeNewTab: Locator
-    readonly linkPracticePageNewTab: Locator
+    public readonly linkMyYouTube: Locator
+    public readonly linkMyYouTubeNewTab: Locator
+    public readonly linkPracticePageNewTab: Locator
 
     constructor(page: Page) {
         this.page = page
 
         // Construct Locators - Exercise: Buttons
-        this.basicClickButton = this.page.locator('[data-testid="basic-click"]')
-        this.doubleClickButton = this.page.locator('[data-testid="double-click"]')
-        this.rightClickButton = this.page.locator('[data-testid="right-click"]')
+        this.basicClickButton = this.page.getByRole('button', { name: 'Click me', exact: true })
+        this.doubleClickButton = this.page.getByRole('button', { name: 'Double click me', exact: true })
+        this.rightClickButton = this.page.getByRole('button', { name: 'Right click me', exact: true })
         this.buttonsContainer = this.page.locator('.buttons-container')
 
         // Construct Locators - Exercise: Radio Buttons
-        this.radioButton1 = this.page.locator('[data-testid="option1"]')
-        this.radioButton2 = this.page.locator('[data-testid="option2"]')
         this.radioButtonsContainer = this.page.locator('.radio-buttons-container')
-
+        // The commented line below is my desired implementation had the site author not misnamed classes here
+        // this.radioButton = this.page.locator('.radio-button-container').filter({ hasText: `Radio button ${index}` }).getByRole('radio')
+        this.radioButton1 = this.page.locator('.radio-button-container').getByRole('radio')
+        this.radioButton2 = this.page.locator('.radio-container').getByRole('radio')
+        
         // Construct Locators - Exercise: Select an Option
-        this.selectDropdown = this.page.locator('[data-testid="dropdown"] select')
+        this.selectDropdown = this.page.locator('.dropdown-container').getByRole('combobox')
 
         // Construct Locators - Exercise: Checkboxes
-        this.checkbox1 = this.page.locator('[data-testid="checkbox1"]')
-        this.checkbox2 = this.page.locator('[data-testid="checkbox2"]')
-        this.checkbox3 = this.page.locator('[data-testid="checkbox3"]')
-        this.checkboxContainer1 = this.checkbox1.locator('..')
-        this.checkboxContainer2 = this.checkbox2.locator('..')
-        this.checkboxContainer3 = this.checkbox3.locator('..')
         this.checkboxesContainer = this.page.locator('.checkbox-container.container-outline')
+        this.checkboxContainer = (index: number) => this.checkboxesContainer.locator('.checkbox-container').filter({ hasText: `Checkbox ${index}` })
+        this.checkbox = (index: number) => this.checkboxesContainer.locator('.checkbox-container').filter({ hasText: `Checkbox ${index}` }).getByRole('checkbox')
 
         // Construct Locators - Exercise: Links
         this.linkMyYouTube = this.page.locator('[data-testid="link-same-tab"]')
@@ -88,17 +83,12 @@ export class GeneralComponentsPage {
     }
 
     // Actions - Exercise: Select an Option
-    public async selectDropdownOption(option: string) {
+    public async selectDropdownOption(option: number) {
         await this.selectDropdown.selectOption({ value: `option${option}` })
     }
 
     // Actions - Exercise: Checkboxes
-    public async checkCheckbox(checkbox: Locator) {
-        await checkbox.check();
-    }
-    public async uncheckCheckbox(checkbox: Locator) {
-        await checkbox.uncheck();
-    }
+    // None
 
     // Actions - Exercise: Links
     public async clickMyYouTubeLink() {

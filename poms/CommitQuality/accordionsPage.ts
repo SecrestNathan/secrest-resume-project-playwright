@@ -7,11 +7,15 @@ export class AccordionsPage {
     public readonly url = "https://commitquality.com/practice-accordions"
 
     // Initialize Locators
+    public readonly accordionHeader: string
+    public readonly accordionContent: Locator
 
     constructor(page: Page) {
         this.page = page
 
         // Construct Locators
+        this.accordionHeader = '[data-testid="accordion-"]'
+        this.accordionContent = this.page.locator('')
     }
 
     // Actions - Navigation
