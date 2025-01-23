@@ -88,7 +88,12 @@ export class GeneralComponentsPage {
     }
 
     // Actions - Exercise: Checkboxes
-    // None
+    public async checkCheckbox(checkbox: Locator) {
+        await checkbox.check()
+    }
+    public async uncheckCheckbox(checkbox: Locator) {
+        await checkbox.uncheck()
+    }
 
     // Actions - Exercise: Links
     public async clickMyYouTubeLink() {

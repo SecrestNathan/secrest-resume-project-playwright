@@ -74,14 +74,14 @@ test.describe('General Components', () => {
     for (let i = 1; i <= 3; i++) {
       await test.step(`Check and Uncheck Checkbox ${i}`, async () => {
         // Check
-        await generalComponentsPage.checkbox(i).check();
-        await expect(generalComponentsPage.checkbox(i)).toBeChecked();
-        await expect(generalComponentsPage.checkboxContainer(i)).toContainText(`Checkbox ${i} checked`);
+        await generalComponentsPage.checkCheckbox(generalComponentsPage.checkbox(i))
+        await expect(generalComponentsPage.checkbox(i)).toBeChecked()
+        await expect(generalComponentsPage.checkboxContainer(i)).toContainText(`Checkbox ${i} checked`)
 
         // Uncheck
-        await generalComponentsPage.checkbox(i).uncheck();
-        await expect(generalComponentsPage.checkbox(i)).not.toBeChecked();
-        await expect(generalComponentsPage.checkboxContainer(i)).not.toContainText(`Checkbox ${i} checked`);
+        await generalComponentsPage.uncheckCheckbox(generalComponentsPage.checkbox(i))
+        await expect(generalComponentsPage.checkbox(i)).not.toBeChecked()
+        await expect(generalComponentsPage.checkboxContainer(i)).not.toContainText(`Checkbox ${i} checked`)
       });
     }
   });
