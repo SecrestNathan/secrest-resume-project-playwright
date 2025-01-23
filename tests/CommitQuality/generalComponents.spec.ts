@@ -12,17 +12,17 @@ test.describe('General Components', () => {
     })
 
     await test.step('Click Left-Click Button', async () => {
-      await generalComponentsPage.clickBasicClickButton()
+      await generalComponentsPage.clickBasicClickButton(generalComponentsPage.basicClickButton)
       await expect(generalComponentsPage.buttonsContainer).toContainText('Button clicked')
     })
 
     await test.step('Click Double-Click Button', async () => {
-      await generalComponentsPage.clickDoubleClickButton()
+      await generalComponentsPage.clickDoubleClickButton(generalComponentsPage.doubleClickButton)
       await expect(generalComponentsPage.buttonsContainer).toContainText('Button double clicked')
     })
 
     await test.step('Click Right-Click Button', async () => {
-      await generalComponentsPage.clickRightClickButton()
+      await generalComponentsPage.clickRightClickButton(generalComponentsPage.rightClickButton)
       await expect(generalComponentsPage.buttonsContainer).toContainText('Button right mouse clicked')
     })
   });

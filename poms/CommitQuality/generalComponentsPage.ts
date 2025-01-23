@@ -13,7 +13,7 @@ export class GeneralComponentsPage {
     public readonly buttonsContainer: Locator
 
     // Initialize Locators - Exercise: Radio Buttons
-    //public readonly radioButton: (index: number) => Locator
+    // public readonly radioButton: (index: number) => Locator
     public readonly radioButton1: Locator
     public readonly radioButton2: Locator
     public readonly radioButtonsContainer: Locator
@@ -67,14 +67,14 @@ export class GeneralComponentsPage {
     }
 
     // Actions - Exercise: Buttons
-    public async clickBasicClickButton() {
-        await this.basicClickButton.click()
+    public async clickBasicClickButton(button: Locator) {
+        await button.click()
     }
-    public async clickDoubleClickButton() {
-        await this.doubleClickButton.dblclick()
+    public async clickDoubleClickButton(button: Locator) {
+        await button.dblclick()
     }
-    public async clickRightClickButton() {
-        await this.rightClickButton.click({ button: 'right' })
+    public async clickRightClickButton(button: Locator) {
+        await button.click({ button: 'right' })
     }
 
     // Actions - Exercise: Radio Buttons
