@@ -7,15 +7,15 @@ export class AccordionsPage {
     public readonly url = "https://commitquality.com/practice-accordions"
 
     // Initialize Locators
-    public readonly accordionHeader: string
+    public readonly accordionHeader: Locator
     public readonly accordionContent: Locator
 
     constructor(page: Page) {
         this.page = page
 
         // Construct Locators
-        this.accordionHeader = '[data-testid="accordion-"]'
-        this.accordionContent = this.page.locator('')
+        this.accordionHeader = this.page.locator('role=button', {hasText: `Accordion`})
+        this.accordionContent = this.accordionHeader.locator('+ div')
     }
 
     // Actions - Navigation
@@ -24,4 +24,12 @@ export class AccordionsPage {
     }
 
     // Actions - Exercise: Accordions
+    public async clickAccordion(accordion: Locator) {
+        accordion.click()
+    }
+
+    // Getters - Exercise: Accordions
+    public async getAccordionCount() {
+        return await this.accordionHeader.count()
+    }
 }
