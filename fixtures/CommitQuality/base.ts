@@ -1,7 +1,7 @@
 import { test as base } from "@playwright/test"
 import { GeneralComponentsPage } from "../../poms/CommitQuality/generalComponentsPage.ts"
 import { AccordionsPage } from "../../poms/CommitQuality/accordionsPage.ts"
-import { PopupsPage } from "../../poms/CommitQuality/popupsPage.ts"
+import { PopupPage } from "../../poms/CommitQuality/popupsPage.ts"
 import { IframesPage } from "../../poms/CommitQuality/iframesPage.ts"
 import { ApisPage } from "../../poms/CommitQuality/apisPage.ts"
 import { DynamicTextPage } from "../../poms/CommitQuality/dynamicTextPage.ts"
@@ -14,7 +14,7 @@ import { TimeTestingPage } from "../../poms/CommitQuality/timeTestingPage.ts"
 type myFixtures = {
     generalComponentsPage: GeneralComponentsPage
     accordionsPage: AccordionsPage
-    popupsPage: PopupsPage
+    popupPage: PopupPage
     iframesPage: IframesPage
     apisPage: ApisPage
     dynamicTextPage: DynamicTextPage
@@ -32,8 +32,8 @@ export const test = base.extend<myFixtures>({
     accordionsPage: async ({ page }, use) => {
         await use(new AccordionsPage(page))
     },
-    popupsPage: async ({ page }, use) => {
-        await use(new PopupsPage(page))
+    popupPage: async ({ page }, use) => {
+        await use(new PopupPage(page))
     },
     iframesPage: async ({ page }, use) => {
         await use(new IframesPage(page))

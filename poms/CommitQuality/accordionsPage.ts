@@ -18,17 +18,17 @@ export class AccordionsPage {
         this.accordionContent = this.accordionHeader.locator('+ div')
     }
 
-    // Actions - Navigation
+    // Navigation
     public async goto() {
         await this.page.goto(this.url)
     }
 
-    // Actions - Exercise: Accordions
+    // Actions
     public async clickAccordion(accordion: Locator) {
         accordion.click()
     }
 
-    // Getters - Exercise: Accordions
+    // Getters
     public async getAccordionCount() {
         return await this.accordionHeader.count()
     }
