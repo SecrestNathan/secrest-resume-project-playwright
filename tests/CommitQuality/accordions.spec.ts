@@ -6,11 +6,11 @@ test.describe('Accordions', () => {
     await accordionsPage.goto()
   })
 
-  test('Automate accordions on the practice page', async ({ accordionsPage }) => {
+  test('Accordions', async ({ accordionsPage }) => {
     await test.step('Initial State', async () => {
       await expect(accordionsPage.accordionContent).not.toBeVisible()
     })
-    await test.step('Initial State', async () => {
+    await test.step('Accordion Content Visibility', async () => {
       const accordionsCount = await accordionsPage.getAccordionCount()
       for (let i = 0; i < accordionsCount; i++) {
         await accordionsPage.clickAccordion(accordionsPage.accordionHeader.nth(i));
