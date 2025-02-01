@@ -7,17 +7,24 @@ export class DragAndDropPage {
     public readonly url = "https://commitquality.com/practice-drag-and-drop"
 
     // Initialize Locators
+    public readonly smallBox: Locator
+    public readonly largeBox: Locator
 
     constructor(page: Page) {
         this.page = page
 
         // Construct Locators
+        this.smallBox = this.page.getByTestId('small-box')
+        this.largeBox = this.page.getByTestId('large-box')
     }
 
-    // Actions - Navigation
+    // Navigation
     public async goto() {
         await this.page.goto(this.url)
     }
 
-    // Actions - Exercise: Drag and Drop
+    // Actions
+    public async dragSmallBoxToLargeBox() {
+        await this.smallBox.dragTo(this.largeBox)
+    }
 }
