@@ -16,7 +16,12 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: |
+        npx playwright install --with-deps
+        echo "COMMITQUALITY_CONTACTUSFORM_NAME=${{ secrets.COMMITQUALITY_CONTACTUSFORM_NAME }}" >> $GITHUB_ENV
+        echo "COMMITQUALITY_CONTACTUSFORM_EMAIL=${{ secrets.COMMITQUALITY_CONTACTUSFORM_EMAIL }}" >> $GITHUB_ENV
+        echo "COMMITQUALITY_CONTACTUSFORM_EMAIL_INCORRECT=${{ secrets.COMMITQUALITY_CONTACTUSFORM_EMAIL_INCORRECT }}" >> $GITHUB_ENV
+        echo "COMMITQUALITY_CONTACTUSFORM_DOB=${{ secrets.COMMITQUALITY_CONTACTUSFORM_DOB }}" >> $GITHUB_ENV
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v4
