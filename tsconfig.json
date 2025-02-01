@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "typeRoots": ["./types/env.d.ts", "./node_modules/@types"],
+    "noEmit": true,
+    "allowImportingTsExtensions": true
+  }
+}
