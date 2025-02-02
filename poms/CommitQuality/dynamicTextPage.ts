@@ -7,17 +7,22 @@ export class DynamicTextPage {
     public readonly url = "https://commitquality.com/practice-dyanmic-text"
 
     // Initialize Locators
+    public readonly dynamicButton: Locator
 
     constructor(page: Page) {
         this.page = page
 
         // Construct Locators
+        this.dynamicButton = this.page.locator('.dynamic-data-container').getByRole('button')
     }
 
-    // Actions - Navigation
+    // Navigation
     public async goto() {
         await this.page.goto(this.url)
     }
 
-    // Actions - Exercise: Dynamic Text
+    // Actions
+    public async clickDynamicButton() {
+        await this.dynamicButton.click()
+    }
 }
