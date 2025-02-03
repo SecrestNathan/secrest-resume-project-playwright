@@ -1,4 +1,4 @@
-import { Page, Locator } from "@playwright/test"
+import { Page, Locator, Clock } from "@playwright/test"
 
 export class TimeTestingPage {
     private readonly page: Page
@@ -7,17 +7,22 @@ export class TimeTestingPage {
     public readonly url = "https://commitquality.com/practice-clock"
 
     // Initialize Locators
+    public readonly timerEndedMessage: Locator
 
     constructor(page: Page) {
         this.page = page
 
         // Construct Locators
+        this.timerEndedMessage = this.page.getByText('YOU WON')
     }
 
-    // Actions - Navigation
+    // Navigation
     public async goto() {
         await this.page.goto(this.url)
     }
 
-    // Actions - Exercise: Time Testing
+    // Actions
+    public async clock() {
+        return this.page.clock; // Expose Playwright's built-in clock()
+    }
 }
