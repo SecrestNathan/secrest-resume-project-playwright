@@ -6,7 +6,12 @@ test.describe('File Upload', () => {
     await fileUploadPage.goto()
   })
 
-  test('', async ({ fileUploadPage }) => {
-    
+  test('Assert File Uploads Successfully', async ({ page, fileUploadPage }) => {
+    await fileUploadPage.uploadFile('fixtures/CommitQuality/fileUploadSpec.txt')
+    await expect(fileUploadPage.fileUploadInput).toHaveValue('C:\\fakepath\\fileUploadSpec.txt')
+    page.once('dialog', (dialog) => {
+      dialog.accept()
+    })
+    await fileUploadPage.clickSubmit()
   })
 })

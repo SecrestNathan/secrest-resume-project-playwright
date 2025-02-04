@@ -1,4 +1,4 @@
-import { Page, Locator, Clock } from "@playwright/test"
+import { Page, Locator } from "@playwright/test"
 
 export class TimeTestingPage {
     private readonly page: Page
@@ -21,7 +21,7 @@ export class TimeTestingPage {
         await this.page.goto(this.url)
     }
 
-    // Actions
+    // Expose
     public async clock() {
         return this.page.clock; // Expose Playwright's built-in clock()
     }
